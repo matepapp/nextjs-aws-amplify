@@ -1,3 +1,4 @@
+import { Box, Flex, Link as Anchor } from "@chakra-ui/core";
 import Head from "next/head";
 import Link from "next/link";
 import { FC } from "react";
@@ -10,29 +11,28 @@ const Layout: FC<Props> = ({
   children,
   title = "This is the default title"
 }) => (
-  <div>
+  <Flex direction="column">
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <header>
-      <nav>
+    <Box as="header" w="full" bg="teal.600" color="white">
+      <Flex as="nav" direction="row">
         <Link href="/">
-          <a>Home</a>
-        </Link>{" "}
-        |{" "}
-        <Link href="/about">
-          <a>About</a>
+          <Anchor m={2}>Home</Anchor>
         </Link>
-      </nav>
-    </header>
-    {children}
+        <Link href="/about">
+          <Anchor m={2}>About</Anchor>
+        </Link>
+      </Flex>
+    </Box>
+    <Box m={4}>{children}</Box>
     <footer>
       <hr />
       <span>I'm here to stay (Footer)</span>
     </footer>
-  </div>
+  </Flex>
 );
 
 export default Layout;
