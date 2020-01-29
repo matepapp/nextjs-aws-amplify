@@ -23,8 +23,8 @@ const Layout: FC<Props> = ({
           <Link href="/">
             <Anchor mx={2}>Home</Anchor>
           </Link>
-          <Link href="/about">
-            <Anchor mx={2}>About</Anchor>
+          <Link href="/posts">
+            <Anchor mx={2}>Posts</Anchor>
           </Link>
         </Box>
         <Box>
