@@ -22,7 +22,7 @@
                 "s3TemplateURL": "https://s3.amazonaws.com/amplify-nextjs-aws-amplify-dev-101145-deployment/amplify-cfn-templates/auth/nextjsawsamplify3e3a4eb8-cloudformation-template.yml",
                 "logicalId": "authnextjsawsamplify3e3a4eb8"
             },
-            "lastPushTimeStamp": "2020-01-29T10:41:23.115Z",
+            "lastPushTimeStamp": "2020-01-29T13:07:43.250Z",
             "output": {
                 "AppClientSecret": "4alp2ifaf2d9upgfhj1eq7eld0qj8cfc8b555trc42sg0vr9en0",
                 "UserPoolId": "eu-central-1_jF3cTED15",
