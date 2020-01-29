@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"nextjsawsamplify3e3a4eb8": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}
