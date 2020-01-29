@@ -22,7 +22,7 @@
                 "s3TemplateURL": "https://s3.amazonaws.com/amplify-nextjs-aws-amplify-dev-101145-deployment/amplify-cfn-templates/auth/nextjsawsamplify3e3a4eb8-cloudformation-template.yml",
                 "logicalId": "authnextjsawsamplify3e3a4eb8"
             },
-            "lastPushTimeStamp": "2020-01-29T13:07:43.250Z",
+            "lastPushTimeStamp": "2020-01-29T14:53:18.403Z",
             "output": {
                 "AppClientSecret": "4alp2ifaf2d9upgfhj1eq7eld0qj8cfc8b555trc42sg0vr9en0",
                 "UserPoolId": "eu-central-1_jF3cTED15",
@@ -33,6 +33,31 @@
                 "UserPoolName": "nextjsawsamplify3e3a4eb8_userpool_3e3a4eb8"
             },
             "lastPushDirHash": "AjNL9Qmskj5rwee4mSnIcTlJBvI="
+        }
+    },
+    "api": {
+        "notes": {
+            "service": "AppSync",
+            "providerPlugin": "awscloudformation",
+            "output": {
+                "authConfig": {
+                    "additionalAuthenticationProviders": [],
+                    "defaultAuthentication": {
+                        "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+                        "userPoolConfig": {
+                            "userPoolId": "authnextjsawsamplify3e3a4eb8"
+                        }
+                    }
+                },
+                "GraphQLAPIIdOutput": "o6t5uq6s4fcrjczb2gnk4zecsu",
+                "GraphQLAPIEndpointOutput": "https://q3pwguqqsndczngzrlkm3el7ve.appsync-api.eu-central-1.amazonaws.com/graphql"
+            },
+            "providerMetadata": {
+                "s3TemplateURL": "https://s3.amazonaws.com/amplify-nextjs-aws-amplify-dev-101145-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+                "logicalId": "apinotes"
+            },
+            "lastPushTimeStamp": "2020-01-29T14:53:18.404Z",
+            "lastPushDirHash": "XTHCk26YYyey/YE7uOK4fep1FVA="
         }
     }
 }
