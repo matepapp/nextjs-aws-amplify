@@ -4,34 +4,34 @@ import {
   FormControl,
   FormLabel,
   Heading,
-  Input
+  Input,
+  useToast
 } from "@chakra-ui/core";
 import { Auth } from "aws-amplify";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 type Form = {
-  name: string;
   email: string;
-  password: string;
+  code: string;
 };
 
-const SignUp = () => {
+const ConfirmSignUp = () => {
   const [isLoading, setLoading] = useState(false);
-  const { handleSubmit, register } = useForm<Form>({
-    defaultValues: {
-      name: "",
-      email: "",
-      password: ""
-    }
-  });
+  const toast = useToast();
+  const { handleSubmit, register } = useForm<Form>();
 
-  const onSubmit = handleSubmit(async ({ email, name, password }) => {
+  const onSubmit = handleSubmit(async ({ email, code }) => {
     try {
       setLoading(true);
-      await Auth.signUp({ username: email, password, attributes: { name } });
+      await Auth.confirmSignUp(email, code);
+      toast({
+        status: "success",
+        title: "Confirm success!",
+        description: "You can login with your credentials"
+      });
     } catch (error) {
-      console.error(error);
+      toast({ status: "error", title: "Error", description: error.message });
     } finally {
       setLoading(false);
     }
@@ -39,27 +39,23 @@ const SignUp = () => {
 
   return (
     <Box maxW="sm">
-      <Heading my={4}>Sign up</Heading>
+      <Heading my={4}>Confirm Sign Up</Heading>
       <form onSubmit={onSubmit}>
-        <FormControl>
-          <FormLabel htmlFor="name">Name</FormLabel>
-          <Input name="name" ref={register} />
-        </FormControl>
         <FormControl mt={3}>
           <FormLabel htmlFor="email">Email</FormLabel>
           <Input type="email" name="email" ref={register} />
         </FormControl>
         <FormControl mt={3}>
-          <FormLabel htmlFor="password">Password</FormLabel>
-          <Input type="password" name="password" ref={register} />
+          <FormLabel htmlFor="code">Code</FormLabel>
+          <Input type="text" name="code" ref={register} />
         </FormControl>
 
         <Button type="submit" mt={6} isLoading={isLoading}>
-          Register
+          Confirm
         </Button>
       </form>
     </Box>
   );
 };
 
-export default SignUp;
+export default ConfirmSignUp;

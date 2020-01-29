@@ -18,23 +18,31 @@ const Layout: FC<Props> = ({
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <Box as="header" w="full" bg="teal.600" color="white">
-      <Flex as="nav" direction="row">
-        <Link href="/">
-          <Anchor m={2}>Home</Anchor>
-        </Link>
-        <Link href="/about">
-          <Anchor m={2}>About</Anchor>
-        </Link>
-        <Link href="/sign-up">
-          <Anchor m={2}>Sign Up</Anchor>
-        </Link>
+      <Flex as="nav" direction="row" p={2}>
+        <Box flex="1">
+          <Link href="/">
+            <Anchor mx={2}>Home</Anchor>
+          </Link>
+          <Link href="/about">
+            <Anchor mx={2}>About</Anchor>
+          </Link>
+        </Box>
+        <Box>
+          <Link href="/login">
+            <Anchor mx={2}>Login</Anchor>
+          </Link>
+          <Link href="/sign-up">
+            <Anchor mx={2}>Sign Up</Anchor>
+          </Link>
+          <Link href="/confirm-sign-up">
+            <Anchor mx={2}>Confirm Sign Up</Anchor>
+          </Link>
+        </Box>
       </Flex>
     </Box>
-    <Box m={4}>{children}</Box>
-    <footer>
-      <hr />
-      <span>I'm here to stay (Footer)</span>
-    </footer>
+    <Box m={4} bg="grey.100">
+      {children}
+    </Box>
   </Flex>
 );
 
