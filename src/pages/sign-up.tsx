@@ -4,7 +4,8 @@ import {
   FormControl,
   FormLabel,
   Heading,
-  Input
+  Input,
+  useToast
 } from "@chakra-ui/core";
 import { Auth } from "aws-amplify";
 import { useState } from "react";
@@ -18,6 +19,7 @@ type Form = {
 
 const SignUp = () => {
   const [isLoading, setLoading] = useState(false);
+  const toast = useToast();
   const { handleSubmit, register } = useForm<Form>({
     defaultValues: {
       name: "",
@@ -30,8 +32,13 @@ const SignUp = () => {
     try {
       setLoading(true);
       await Auth.signUp({ username: email, password, attributes: { name } });
+      toast({
+        status: "success",
+        title: "Successful Sign Up",
+        description: "Check your email inbox with for verification code"
+      });
     } catch (error) {
-      console.error(error);
+      toast({ status: "error", title: "Error", description: error.message });
     } finally {
       setLoading(false);
     }
