@@ -25,6 +25,9 @@ const Layout: FC<Props> = ({
         <Link href="/about">
           <Anchor m={2}>About</Anchor>
         </Link>
+        <Link href="/sign-up">
+          <Anchor m={2}>Sign Up</Anchor>
+        </Link>
       </Flex>
     </Box>
     <Box m={4}>{children}</Box>
