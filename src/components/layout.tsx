@@ -18,13 +18,16 @@ const Layout: FC<Props> = ({
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <Box as="header" w="full" bg="teal.600" color="white">
-      <Flex as="nav" direction="row" p={2}>
+      <Flex as="nav" direction="row" p={2} wrap="wrap">
         <Box flex="1">
           <Link href="/">
             <Anchor mx={2}>Home</Anchor>
           </Link>
-          <Link href="/posts">
-            <Anchor mx={2}>Posts</Anchor>
+          <Link href="/episodes">
+            <Anchor mx={2}>Episodes λ</Anchor>
+          </Link>
+          <Link href="/characters">
+            <Anchor mx={2}>Characters ⚡️</Anchor>
           </Link>
         </Box>
         <Box>
