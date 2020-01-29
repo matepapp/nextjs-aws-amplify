@@ -3,7 +3,7 @@ import { getDataFromTree } from "@apollo/react-ssr";
 import { Flex, Heading, SimpleGrid, Text } from "@chakra-ui/core";
 import gql from "graphql-tag";
 import { NextPage } from "next";
-import withApollo from "../lib/with-apollo";
+import { withApollo } from "../lib/with-apollo";
 
 const QUERY = gql`
   {
@@ -19,7 +19,9 @@ const QUERY = gql`
 `;
 
 const EpisodesPage: NextPage = () => {
-  const { data } = useQuery(QUERY);
+  const { data } = useQuery(QUERY, {
+    context: { clientName: "rickAndMorty" }
+  });
 
   return (
     <>

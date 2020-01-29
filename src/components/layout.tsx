@@ -32,11 +32,12 @@ const Layout: FC<Props> = ({
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <Box as="header" w="full" bg="teal.600" color="white">
-      <Flex as="nav" direction="row" p={2} wrap="wrap">
+      <Flex as="nav" direction="row" p={3} wrap="wrap">
         <Box flex="1">
           <NavLink to="/" label="Home" />
           <NavLink to="/episodes" label="Episodes λ" />
           <NavLink to="/characters" label="Characters ⚡️" />
+          <NavLink to="/posts" label="Posts 🔶" />
         </Box>
         <Box>
           <NavLink to="/login" label="Login" />

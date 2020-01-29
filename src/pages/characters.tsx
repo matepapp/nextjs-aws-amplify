@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/core";
 import gql from "graphql-tag";
 import { NextPage } from "next";
-import withApollo from "../lib/with-apollo";
+import { withApollo } from "../lib/with-apollo";
 
 const QUERY = gql`
   {
@@ -25,7 +25,9 @@ const QUERY = gql`
 `;
 
 const CharactersPage: NextPage = () => {
-  const { data, loading } = useQuery(QUERY);
+  const { data, loading } = useQuery(QUERY, {
+    context: { clientName: "rickAndMorty" }
+  });
 
   return (
     <>
