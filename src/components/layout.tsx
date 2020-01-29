@@ -7,6 +7,20 @@ type Props = {
   title?: string;
 };
 
+const NavLink = ({ to, label }: { to: string; label: string }) => (
+  <Link href={to}>
+    <Anchor
+      mx={1}
+      p={2}
+      rounded="md"
+      _hover={{ bg: "teal.700" }}
+      fontWeight="semibold"
+    >
+      {label}
+    </Anchor>
+  </Link>
+);
+
 const Layout: FC<Props> = ({
   children,
   title = "This is the default title"
@@ -20,26 +34,14 @@ const Layout: FC<Props> = ({
     <Box as="header" w="full" bg="teal.600" color="white">
       <Flex as="nav" direction="row" p={2} wrap="wrap">
         <Box flex="1">
-          <Link href="/">
-            <Anchor mx={2}>Home</Anchor>
-          </Link>
-          <Link href="/episodes">
-            <Anchor mx={2}>Episodes λ</Anchor>
-          </Link>
-          <Link href="/characters">
-            <Anchor mx={2}>Characters ⚡️</Anchor>
-          </Link>
+          <NavLink to="/" label="Home" />
+          <NavLink to="/episodes" label="Episodes λ" />
+          <NavLink to="/characters" label="Characters ⚡️" />
         </Box>
         <Box>
-          <Link href="/login">
-            <Anchor mx={2}>Login</Anchor>
-          </Link>
-          <Link href="/sign-up">
-            <Anchor mx={2}>Sign Up</Anchor>
-          </Link>
-          <Link href="/confirm-sign-up">
-            <Anchor mx={2}>Confirm Sign Up</Anchor>
-          </Link>
+          <NavLink to="/login" label="Login" />
+          <NavLink to="/sign-up" label="Sign Up" />
+          <NavLink to="/confirm-sign-up" label="Confirm Sign Up" />
         </Box>
       </Flex>
     </Box>
