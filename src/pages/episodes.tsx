@@ -21,8 +21,6 @@ const QUERY = gql`
 const EpisodesPage: NextPage = () => {
   const { data } = useQuery(QUERY);
 
-  console.log(data);
-
   return (
     <>
       <Heading>Episodes</Heading>
