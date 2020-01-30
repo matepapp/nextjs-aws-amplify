@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Link as Anchor, Text } from "@chakra-ui/core";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { FC } from "react";
 import { useAmplifyAuth } from "../lib/hooks/use-amplify-auth";
 
@@ -8,19 +9,24 @@ type Props = {
   title?: string;
 };
 
-const NavLink = ({ to, label }: { to: string; label: string }) => (
-  <Link href={to}>
-    <Anchor
-      mx={1}
-      p={2}
-      rounded="md"
-      _hover={{ bg: "teal.700" }}
-      fontWeight="semibold"
-    >
-      {label}
-    </Anchor>
-  </Link>
-);
+const NavLink = ({ to, label }: { to: string; label: string }) => {
+  const router = useRouter();
+
+  return (
+    <Link href={to}>
+      <Anchor
+        mx={1}
+        p={2}
+        rounded="md"
+        bg={router.pathname === to ? "teal.800" : "none"}
+        fontWeight="semibold"
+        _hover={{ bg: "teal.700" }}
+      >
+        {label}
+      </Anchor>
+    </Link>
+  );
+};
 
 const Layout: FC<Props> = ({
   children,
