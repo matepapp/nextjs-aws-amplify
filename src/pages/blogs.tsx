@@ -1,7 +1,16 @@
-import { useQuery } from "@apollo/react-hooks";
-import { Box, Flex, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/core";
+import { useQuery, useSubscription } from "@apollo/react-hooks";
+import {
+  Box,
+  Flex,
+  Heading,
+  SimpleGrid,
+  Spinner,
+  Stack,
+  Text
+} from "@chakra-ui/core";
 import gql from "graphql-tag";
 import { NextPage } from "next";
+import { useEffect, useState } from "react";
 import { withApollo } from "../lib/with-apollo";
 
 const QUERY = gql`
@@ -20,6 +29,42 @@ const QUERY = gql`
     }
   }
 `;
+
+const SUBSCRIPTION = gql`
+  subscription {
+    onCreateBlog {
+      name
+    }
+  }
+`;
+
+const NewBlog = () => {
+  const [newBlogs, setNewBlogs] = useState<string[]>([]);
+  const { data } = useSubscription(SUBSCRIPTION);
+
+  useEffect(() => {
+    if (data) {
+      setNewBlogs(prevBlogs => [...prevBlogs, data.onCreateBlog.name]);
+    }
+  }, [data, setNewBlogs]);
+
+  return (
+    <>
+      <Heading mt={5} fontSize="xl">
+        Live Blog 🔥
+      </Heading>
+      <Stack spacing={10} m={4}>
+        {newBlogs.map((blogName, index) => (
+          <Box key={index} shadow="lg" rounded="lg" p={4}>
+            <Heading as="h3" fontSize="xl" mt={1}>
+              {blogName}
+            </Heading>
+          </Box>
+        ))}
+      </Stack>
+    </>
+  );
+};
 
 const BlogsPage: NextPage = () => {
   const { data, loading } = useQuery(QUERY);
@@ -56,6 +101,8 @@ const BlogsPage: NextPage = () => {
           ))}
         </SimpleGrid>
       )}
+
+      <NewBlog />
     </>
   );
 };

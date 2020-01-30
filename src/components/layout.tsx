@@ -28,8 +28,6 @@ const Layout: FC<Props> = ({
 }) => {
   const { isLoggedIn, authenticatedUser, signOut } = useAmplifyAuth();
 
-  console.log({ isLoggedIn });
-
   return (
     <Flex direction="column">
       <Head>
