@@ -10,7 +10,7 @@ const EditorPage: NextPage = () => {
   return (
     <>
       <Heading>CKEditor</Heading>
-      <CKEditor data="Some default stuff" />
+      <CKEditor />
     </>
   );
 };
