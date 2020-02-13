@@ -1,16 +1,23 @@
-import { useQuery, useSubscription } from "@apollo/react-hooks";
+import { useMutation, useQuery, useSubscription } from "@apollo/react-hooks";
 import {
   Box,
+  Button,
   Flex,
+  FormControl,
+  FormLabel,
   Heading,
+  Input,
   SimpleGrid,
   Spinner,
   Stack,
-  Text
+  Text,
+  useToast
 } from "@chakra-ui/core";
 import gql from "graphql-tag";
+import nanoid from "nanoid";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { withApollo } from "../lib/with-apollo";
 
 const QUERY = gql`
@@ -30,31 +37,77 @@ const QUERY = gql`
   }
 `;
 
+const MUTATION = gql`
+  mutation CreateBlog($id: ID!, $name: String!) {
+    createBlog(input: { id: $id, name: $name }) {
+      id
+      name
+    }
+  }
+`;
+
 const SUBSCRIPTION = gql`
   subscription {
     onCreateBlog {
+      id
       name
     }
   }
 `;
 
 const NewBlog = () => {
-  const [newBlogs, setNewBlogs] = useState<string[]>([]);
-  const { data } = useSubscription(SUBSCRIPTION);
+  const [createBlog, { loading }] = useMutation(MUTATION);
+  const { handleSubmit, register } = useForm();
+  const toast = useToast();
 
+  const onSubmit = handleSubmit(async ({ name }) => {
+    try {
+      const id = nanoid();
+      console.log({ id, name });
+      await createBlog({ variables: { id, name } });
+      toast({ status: "success", title: "New blog created" });
+    } catch (error) {
+      toast({ status: "error", title: "Error", description: error.message });
+    }
+  });
+
+  return (
+    <>
+      <Heading mt={4} fontSize="xl">
+        New Blog
+      </Heading>
+      <form onSubmit={onSubmit}>
+        <FormControl mt={2} maxW="md">
+          <FormLabel htmlFor="name">Blog name</FormLabel>
+          <Input type="text" name="name" ref={register} />
+        </FormControl>
+
+        <Button type="submit" mt={4} isLoading={loading}>
+          Create Blog
+        </Button>
+      </form>
+    </>
+  );
+};
+
+const LiveBlog = () => {
+  const [liveBlogs, setLiveBlogs] = useState<string[]>([]);
+  const { data, error } = useSubscription(SUBSCRIPTION);
+
+  console.log({ error });
   useEffect(() => {
     if (data) {
-      setNewBlogs(prevBlogs => [...prevBlogs, data.onCreateBlog.name]);
+      setLiveBlogs(prevBlogs => [...prevBlogs, data.onCreateBlog.name]);
     }
-  }, [data, setNewBlogs]);
+  }, [data, setLiveBlogs]);
 
   return (
     <>
       <Heading mt={5} fontSize="xl">
         Live Blog 🔥
       </Heading>
-      <Stack spacing={10} m={4}>
-        {newBlogs.map((blogName, index) => (
+      <Stack spacing={4} m={4}>
+        {liveBlogs.map((blogName, index) => (
           <Box key={index} shadow="lg" rounded="lg" p={4}>
             <Heading as="h3" fontSize="xl" mt={1}>
               {blogName}
@@ -77,7 +130,7 @@ const BlogsPage: NextPage = () => {
       </Heading>
       {loading && <Spinner size="lg" m={4} />}
       {data && (
-        <SimpleGrid minChildWidth={200} spacing={10} mt={4}>
+        <SimpleGrid minChildWidth={250} spacing={10} mt={4}>
           {data.listBlogs.items.map(({ name, id, posts }: any) => (
             <Flex key={id} direction="column" shadow="lg" rounded="lg" p={4}>
               <Heading as="h3" fontSize="xl" mt={1}>
@@ -103,6 +156,7 @@ const BlogsPage: NextPage = () => {
       )}
 
       <NewBlog />
+      <LiveBlog />
     </>
   );
 };

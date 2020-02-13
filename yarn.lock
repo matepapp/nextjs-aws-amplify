@@ -1355,6 +1355,18 @@
   resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.2.4.tgz#f79720b4755aa197c2e15e982e2f438f5748e348"
   integrity sha512-WTfSE1Eauak/Nrg6cA9FgPTFvVawejsai6zXoq0QYTQ3mxONeRtGhKxa7wMlUzWWmzrmTeV+rwLjHgsCntdrsA==
 
+"@types/nanoid@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@types/nanoid/-/nanoid-2.1.0.tgz#41edfda78986e9127d0dc14de982de766f994020"
+  integrity sha512-xdkn/oRTA0GSNPLIKZgHWqDTWZsVrieKomxJBOQUK9YDD+zfSgmwD5t4WJYra5S7XyhTw7tfvwznW+pFexaepQ==
+  dependencies:
+    "@types/node" "*"
+
+"@types/node@*":
+  version "13.5.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.5.3.tgz#37f1f539b7535b9fb4ef77d59db1847a837b7f17"
+  integrity sha512-ZPnWX9PW992w6DUsz3JIXHaSb5v7qmKCVzC3km6SxcDGxk7zmLfYaCJTbktIa5NeywJkkZDhGldKqDIvC5DRrA==
+
 "@types/node@>=6":
   version "13.5.1"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.5.1.tgz#6fae50892d1841f4b38b298e2f78fb68c5960cb9"
@@ -4633,6 +4645,11 @@ nano-css@^5.2.1:
     sourcemap-codec "^1.4.1"
     stacktrace-js "^2.0.0"
     stylis "3.5.0"
+
+nanoid@^2.1.11:
+  version "2.1.11"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-2.1.11.tgz#ec24b8a758d591561531b4176a01e3ab4f0f0280"
+  integrity sha512-s/snB+WGm6uwi0WjsZdaVcuf3KJXlfGl2LcxgwkEwJF0D/BWzVWAZW/XY4bFaiR7s0Jk3FPvlnepg1H1b1UwlA==
 
 nanomatch@^1.2.9:
   version "1.2.13"
