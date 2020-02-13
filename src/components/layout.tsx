@@ -45,6 +45,7 @@ const Layout: FC<Props> = ({
         <Flex as="nav" direction="row" p={3} wrap="wrap" align="center">
           <Box flex="1">
             <NavLink to="/" label="Home" />
+            <NavLink to="/editor" label="Editor" />
             <NavLink to="/episodes" label="Episodes λ" />
             <NavLink to="/characters" label="Characters ⚡️" />
             {isLoggedIn && <NavLink to="/blogs" label="Blogs 🔶" />}

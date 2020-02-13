@@ -1103,6 +1103,18 @@
     toasted-notes "3.0.0"
     use-dark-mode "2.3.1"
 
+"@ckeditor/ckeditor5-build-classic@^16.0.0":
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-build-classic/-/ckeditor5-build-classic-16.0.0.tgz#9141e94ea6765eda4925aaf062448507410bbe70"
+  integrity sha512-gBfZqWg3hmCvhq6/wX5UJp4qwl6gB+NJPpOkya2Y3jWKA0HKf3UdlhIvaHq7dRaqhi4unmqaJZVEk5VpZ1vDOg==
+
+"@ckeditor/ckeditor5-react@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-react/-/ckeditor5-react-2.1.0.tgz#f612546a5a328899a436d71b72ffd632600049e8"
+  integrity sha512-rlHjRKhwP9tNK0Yj2UJShL14mRfxLPgJ+Pv6zTv/Mvmd4wrwGnJf+5ybOAGK92S02hP1cXH+9km+PRO1b4V+ng==
+  dependencies:
+    prop-types "^15.6.1"
+
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
@@ -1349,6 +1361,26 @@
   version "2.0.50"
   resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.50.tgz#117540e026d64e1846093abbd5adc7e27fda7bcb"
   integrity sha512-VMhZMMQgV1zsR+lX/0IBfAk+8Eb7dPVMWiQGFAt3qjo5x7Ml6b77jUo0e1C3ToD+XRDXqtrfw+6AB0uUsPEr3Q==
+
+"@types/ckeditor__ckeditor5-core@^11.0.2":
+  version "11.0.2"
+  resolved "https://registry.yarnpkg.com/@types/ckeditor__ckeditor5-core/-/ckeditor__ckeditor5-core-11.0.2.tgz#65b0a4bbfa63e11fdc35052820849dbc149fa225"
+  integrity sha512-PpFzlUyxsSeWI8mu5wH3F1REEy1MFMDVmeCIQtDXodpvHF5cb9NBPCwDzH2+V5UA3rQdnaRn/LALSoswBoXniw==
+  dependencies:
+    "@types/ckeditor__ckeditor5-engine" "*"
+    "@types/ckeditor__ckeditor5-utils" "*"
+
+"@types/ckeditor__ckeditor5-engine@*":
+  version "11.0.2"
+  resolved "https://registry.yarnpkg.com/@types/ckeditor__ckeditor5-engine/-/ckeditor__ckeditor5-engine-11.0.2.tgz#816049387c97cbeeb6f237ec8622f2a5842b1639"
+  integrity sha512-XJJWqQjLm4rs8mswl7vlxIRfd4Gh29S/PW7eQLlfyRgHVfirSS+K6NTTfmnXwJbq9N5If47/mwbcZEMqOyPyag==
+  dependencies:
+    "@types/ckeditor__ckeditor5-utils" "*"
+
+"@types/ckeditor__ckeditor5-utils@*":
+  version "10.2.3"
+  resolved "https://registry.yarnpkg.com/@types/ckeditor__ckeditor5-utils/-/ckeditor__ckeditor5-utils-10.2.3.tgz#06234d090c921564176799ee6e48a4bd61ef9b55"
+  integrity sha512-5dKPouz+Rpszrj6XNdVYWDNs4nOtb1OtDEO3CADRtWveiD/lJEpbO4vaeZSVvqhJ8hH5wgY4jjRe+SRj1cD9NA==
 
 "@types/js-cookie@2.2.4":
   version "2.2.4"
