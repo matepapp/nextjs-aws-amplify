@@ -25,7 +25,7 @@
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.1",
     "isomorphic-unfetch": "3.0.0",
-    "nanoid": "^2.1.11",
+    "nanoid": "^3.1.31",
     "next": "latest",
     "next-with-apollo": "^5.0.0",
     "react": "^16.12.0",
